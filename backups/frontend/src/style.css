@@ -1,0 +1,53 @@
+.not-found-container {
+  margin-top: 150px;
+  text-align: center;
+  padding: 80px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.not-found-container .logos {
+  margin-bottom: 40px;
+}
+
+.not-found-container .logo {
+  width: 80px;
+  margin: 0 10px;
+  transition: transform 0.3s;
+}
+
+.not-found-container .logo:hover {
+  transform: rotate(15deg) scale(1.2);
+}
+
+.not-found-container h1 {
+  font-size: 6rem;
+  margin: 0;
+  color: #0d6efd; /* Vite/Bootstrap primary color */
+}
+
+.not-found-container h2 {
+  font-size: 2rem;
+  margin: 10px 0 20px;
+}
+
+.not-found-container p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.not-found-container .home-link {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #0d6efd;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.not-found-container .home-link:hover {
+  background-color: #084298;
+  transform: scale(1.05);
+}

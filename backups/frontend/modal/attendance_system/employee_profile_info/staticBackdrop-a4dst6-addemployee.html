@@ -1,0 +1,881 @@
+<!-- ============================
+  ADD EMPLOYEE MODAL
+=============================== -->
+<form id="form_addemployee_a4dst6" enctype="multipart/form-data">
+  <div class="modal fade" id="staticBackdrop-a4dst6-addemployee" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop-a4dst6-addemployeeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h1 class="modal-title fs-5" id="staticBackdrop-a4dst6-addemployeeLabel"><i class="ri-add-large-fill me-1"></i> Add Employee</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+
+
+          <div class="row g-3">
+            <div class="col-md-6">
+
+
+
+            <!-- ID PICTURE -->
+            <div class="card mt-2">
+              <div class="card-header bg-secondary text-white">
+                <h1 class="fs-5 mb-0">ID Picture</h1>
+              </div>
+              <div class="card-body text-center">
+
+                  <div class="d-flex flex-column justify-content-center align-items-center">
+
+                  <!-- Image Preview -->
+                  <img
+                      id="preview1_yyxt"
+                      src="./assets/images/default-picture/user-3-fill.png"
+                      alt="Cropped preview"
+                      class="img-fluid border border-2 mb-2"
+                      style="width:300px;"
+                  >
+
+                  <!-- Choose Photo Button -->
+                  <button
+                      type="button"
+                      class="btn btn-primary mb-3"
+                      id="btn_modal_crop_img_staticBackdrop"
+                      style="width:300px;"
+                  >
+                      Choose Photo
+                  </button>
+
+                  <!-- Hidden Base64 -->
+                  <input
+                      type="hidden"
+                      name="addEmployee_image_base64"
+                      id="addEmployee_image_base64"
+                  >
+
+                  <!-- Employee ID -->
+                  <div class="mb-2 w-100" style="max-width:300px;">
+                      <label for="addEmployee_employee_id" class="form-label text-start d-flex  justify-content-start">Employee ID </label>
+                      <input
+                      type="text"
+                      class="form-control fw-semibold text-uppercase"
+                      id="addEmployee_employee_id"
+                      name="addEmployee_employee_id"
+                      placeholder="Enter employee id"
+                      required
+                      >
+                  </div>
+
+                  </div>
+
+              </div>
+            </div>
+
+
+
+
+
+              <!-- Fullname -->
+              <div class="card mt-2">
+                <div class="card-header bg-secondary text-white">
+                  <h1 class="fs-5">I. Fullname</h1>
+                </div>
+                <div class="card-body">
+                  <div class="mb-2">
+                    <label for="addEmployee_first_name" class="form-label">First Name </label>
+                    <input type="text" class="form-control fw-semibold text-uppercase" id="addEmployee_first_name" name="addEmployee_first_name" placeholder="Enter first name" required>
+                  </div>
+                  <div class="mb-2">
+                    <label for="addEmployee_middle_name" class="form-label">Middle Name </label>
+                    <input type="text" class="form-control fw-semibold text-uppercase" id="addEmployee_middle_name" name="addEmployee_middle_name" placeholder="Enter middle name" required>
+                  </div>
+                  <div class="mb-2">
+                    <label for="addEmployee_last_name" class="form-label">Last Name </label>
+                    <input type="text" class="form-control fw-semibold text-uppercase" id="addEmployee_last_name" name="addEmployee_last_name" placeholder="Enter last name" required>
+                  </div>
+                  <div class="mb-2">
+                    <label for="addEmployee_suffix" class="form-label">Suffix </label>
+                    <select class="form-select fw-semibold text-uppercase" id="addEmployee_suffix" name="addEmployee_suffix" required>
+                      <option value="" disabled selected>--SELECT SUFFIX--</option>
+                      <option value="N/A">N/A</option>
+                      <option value="JR.">JR.</option>
+                      <option value="SR.">SR.</option>
+                      <option value="II">II</option>
+                      <option value="III">III</option>
+                      <option value="IV">IV</option>
+                      <option value="V">V</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gender & Civil Status -->
+              <div class="card mt-2">
+                <div class="card-header bg-secondary text-white">
+                  <h1 class="fs-5">II. Gender & Civil Status</h1>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="addEmployee_gender" class="form-label">Gender </label>
+                                <select class="form-select fw-semibold text-uppercase" id="addEmployee_gender" name="addEmployee_gender" required>
+                                <option value="" disabled selected>--SELECT--</option>
+                                <option value="MALE">MALE</option>
+                                <option value="FEMALE">FEMALE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="addEmployee_civilstatus" class="form-label">Civil Status </label>
+                                <select class="form-select fw-semibold text-uppercase" id="addEmployee_civilstatus" name="addEmployee_civilstatus" required>
+                                <option value="" disabled selected>--SELECT--</option>
+                                <option value="SINGLE">SINGLE</option>
+                                <option value="MARRIED">MARRIED</option>
+                                <option value="WIDOWED">WIDOWED</option>
+                                <option value="DIVORCED">DIVORCED</option>
+                                </select>
+                            </div>         
+                        </div>
+                    </div>
+
+
+
+                <div class="mb-2">
+                    <label for="addEmployee_contact_number" class="form-label">Contact Number </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control fw-semibold text-uppercase" 
+                            id="addEmployee_contact_number" name="addEmployee_contact_number" 
+                            placeholder="0900-000-0000" maxlength="13" required>
+                        <span class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" id="contactNumber_na">
+                            <label class="ms-1 mb-0" for="contactNumber_na">N/A </label>
+                        </span>
+                    </div>
+                </div>
+
+
+                </div>
+              </div>
+
+              <!-- Birthdate -->
+              <div class="card mt-2">
+                <div class="card-header bg-secondary text-white">
+                  <h1 class="fs-5">III. Birthdate</h1>
+                </div>
+                <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <div class="mb-2">
+                            <label for="addEmployee_birth_year" class="form-label">Birthdate (Year) </label>
+                            <select class="form-select fw-semibold text-uppercase" id="addEmployee_birth_year" name="addEmployee_birth_year" required>
+                            <option value="" disabled selected>--SELECT--</option>
+                            <option value="N/A">N/A</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="mb-2">
+                            <label for="addEmployee_birth_month" class="form-label">Birthdate (Month) </label>
+                            <select class="form-select fw-semibold text-uppercase" id="addEmployee_birth_month" name="addEmployee_birth_month" required>
+                                <option value="" disabled selected>Month</option>
+                                <option value="N/A">N/A</option>
+                                <option value="1">[1] JANUARY</option>
+                                <option value="2">[2] FEBRUARY</option>
+                                <option value="3">[3] MARCH</option>
+                                <option value="4">[4] APRIL</option>
+                                <option value="5">[5] MAY</option>
+                                <option value="6">[6] JUNE</option>
+                                <option value="7">[7] JULY</option>
+                                <option value="8">[8] AUGUST</option>
+                                <option value="9">[9] SEPTEMBER</option>
+                                <option value="10">[10] OCTOBER</option>
+                                <option value="11">[11] NOVEMBER</option>
+                                <option value="12">[12] DECEMBER</option>
+                            </select>
+                        </div>
+
+                        
+                    </div>
+                    <div class="col-md-4">
+                   
+                        <div class="mb-2">
+                            <label for="addEmployee_birth_day" class="form-label">Birthdate (Day) </label>
+                            <select class="form-select fw-semibold text-uppercase" id="addEmployee_birth_day" name="addEmployee_birth_day" required>
+                            <option value="" disabled selected>--SELECT--</option>
+                            <option value="N/A">N/A</option>
+                            </select>
+                        </div>    
+                         
+                    </div>
+                </div>
+
+ 
+
+
+
+                </div>
+              </div>
+
+              <!-- Address -->
+              <div class="card mt-2">
+                <div class="card-header bg-secondary text-white">
+                  <h1 class="fs-5">IV. Address</h1>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="addEmployee_town" class="form-label">Town / City </label>
+                                <select class="form-select fw-semibold text-uppercase" id="addEmployee_town" name="addEmployee_town" required>
+                                <option value="" disabled selected>--SELECT TOWN--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="addEmployee_brgy" class="form-label">Barangay </label>
+                                <select class="form-select fw-semibold text-uppercase" id="addEmployee_brgy" name="addEmployee_brgy" required>
+                                <option value="" disabled selected>--SELECT BRGY--</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <!-- Employment details -->
+              <div class="card mt-2">
+                <div class="card-header bg-secondary text-white">
+                  <h1 class="fs-5">V. Employment details</h1>
+                </div>
+                <div class="card-body">
+
+
+                  <div class="mb-2">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="addEmployee_date_from" class="form-label">From (YYYY-MM-DD) </label>
+                        <input type="text" class="form-control fw-semibold text-uppercase" id="addEmployee_date_from" name="addEmployee_date_from" placeholder="E.G., YYYY-MM-DD" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="addEmployee_date_to" class="form-label">To (YYYY-MM-DD) </label>
+                        <input type="text" class="form-control fw-semibold text-uppercase" id="addEmployee_date_to" name="addEmployee_date_to" placeholder="E.G., YYYY-MM-DD" required>           
+                      </div>
+                    </div>
+                  </div>
+
+
+                    <div class="mb-2">
+                      <label for="addEmployee_current_status" class="form-label">Current status</label>
+                      <select class="form-select fw-semibold text-uppercase" name="addEmployee_current_status" id="addEmployee_current_status" required>
+                        <option value="" selected disabled>-- SELECT --</option>
+                        <option value="ACTIVE">ACTIVE</option>
+                        <option value="LEAVE">LEAVE</option>
+                        <option value="RESIGNED">RESIGNED</option>
+                        <option value="RETIRED">RETIRED</option>
+                      </select>
+                    </div>
+
+
+
+
+                
+                  <div class="mb-2">
+                    <label for="addEmployee_type" class="form-label">Employee Type </label>
+                    <select class="form-select fw-semibold text-uppercase" id="addEmployee_type" name="addEmployee_type" required>
+                      <option value="" disabled selected>--SELECT--</option>
+                      <option value="PERMANENT">PERMANENT</option>
+                      <option value="JOB ORDER">JOB ORDER</option>
+                    </select>
+                  </div>
+                  <div class="mb-2">
+                    <label for="addEmployee_designation" class="form-label">Designation </label>
+                    <input type="text" class="form-control fw-semibold text-uppercase" id="addEmployee_designation" name="addEmployee_designation" placeholder="Enter designation" required>
+                  </div>
+                  <div class="mb-2">
+                    <label for="addEmployee_office" class="form-label">Office </label>
+                    <select class="form-select fw-semibold text-uppercase" id="addEmployee_office" name="addEmployee_office" required>
+                      <option value="" disabled selected>--SELECT--</option>
+
+                    </select>
+                  </div>
+
+                <div class="mb-2">
+                    <label for="addEmployee_other_office" class="form-label">Other office </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control fw-semibold text-uppercase" id="addEmployee_other_office" name="addEmployee_other_office" value="N/A" placeholder="Enter other office" checked required>
+                        <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="checkbox" id="otherOffice_na">
+                        <label class="ms-1 mb-0" for="otherOffice_na">N/A </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                  <div class="mb-2">
+                    <label for="addEmployee_monthly_salary" class="form-label">Monthly Salary </label>
+                    <input type="text" class="form-control fw-semibold text-uppercase" id="addEmployee_monthly_salary" name="addEmployee_monthly_salary" placeholder="Enter monthly salary" inputmode="decimal" autocomplete="off" required>
+
+                  </div>
+                  <div class="mb-2">
+                    <label for="addEmployee_remarks" class="form-label">Remarks </label>
+                    <textarea class="form-control fw-semibold text-uppercase" id="addEmployee_remarks" name="addEmployee_remarks" rows="3" placeholder="Optional remarks" required></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary w-100 rounded-3 fs-5">
+            <i class="ri-save-2-fill me-2 fs-5"></i> Save
+          </button> 
+        </div>
+      </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ============================
+  CROPPER MODAL
+=============================== -->
+<div class="modal fade" id="modal_crop_img_staticBackdrop_cxzF1f2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Crop and Rotate Image</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body bg-secondary bg-opacity-25">
+        <div class="row g-3">
+          <div class="col-lg-8">
+            <div class="card">
+              <div class="card-body">
+                <label class="btn btn-primary mb-3">
+                 <i class="ri-add-line"></i> Add Photo <input id="ainputImage" type="file" accept="image/*" hidden>
+                 </label>
+                <div class="img-container-yyxt mb-3" style="height:420px; background:#fff; display:flex; justify-content:center; align-items:center;">
+                  <img id="xfas_image" src="../assets/images/default-picture/user-3-fill.png" alt="Source" style="max-height:100%; max-width:100%;">
+                </div>
+                <div class="d-flex flex-column gap-2">
+                  <div class="d-flex gap-2 flex-wrap">
+                    <button type="button" id="btnZoomIn" class="btn btn-outline-secondary btn-sm fs-5">Zoom +</button>
+                    <button type="button" id="btnZoomOut" class="btn btn-outline-secondary btn-sm fs-5">Zoom -</button>
+                    <button type="button" id="btnReset" class="btn btn-outline-secondary btn-sm fs-5">Reset</button>
+                    <button type="button" id="btnCrop" class="btn btn-success btn-sm ms-auto fs-5"><i class="ri-crop-line"></i> Crop</button>
+                  </div>
+                  <div>
+                    <label class="form-label mb-1">Rotate (Free rotation) </label>
+                    <input type="range" min="0" max="360" value="0" id="rotateSlider" class="form-range">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <h6 class="card-title mb-2">Cropped preview</h6>
+                <img id="preview2_yyxt" src="../assets/images/default-picture/user-3-fill.png" alt="Cropped preview 2" class="img-fluid mb-2" />
+                <button type="button" id="btnClear" class="btn btn-outline-danger w-100 mt-2">Clear</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $('#btnclick-a4dst6-addemployee').on('click', () => {
+    $('#staticBackdrop-a4dst6-addemployee').modal('show');
+  });
+</script>
+
+<script>
+$(function () {
+
+  const $modal = $('#staticBackdrop-a4dst6-addemployee');
+  const $departmentSelect = $('#addEmployee_office');
+
+  // 🔥 CRITICAL FIX
+  $(document).on('select2:open', () => {
+    document.querySelector('.modal.show')?.removeAttribute('tabindex');
+  });
+
+  function initDepartmentSelect() {
+    if ($departmentSelect.hasClass('select2-hidden-accessible')) {
+      $departmentSelect.select2('destroy');
+    }
+
+    $departmentSelect.select2({
+      placeholder: '-- SELECT DEPARTMENT --',
+      theme: 'bootstrap-5',
+      width: '100%',
+      dropdownParent: $modal
+    });
+  }
+
+  $modal.on('shown.bs.modal', function () {
+
+    if ($departmentSelect.data('loaded')) return;
+
+    $.ajax({
+      url: `${APP_API_ENDPOINT}/getdata/office/department`,
+      type: 'GET',
+      dataType: 'json',
+      xhrFields: { withCredentials: true },
+      success(response) {
+
+        if (response.status !== 'success') return;
+
+        $departmentSelect.empty();
+
+        $departmentSelect.append(
+          new Option('N/A', 'N/A', true, true)
+        );
+
+        response.data.forEach(dept => {
+          $departmentSelect.append(
+            new Option(
+              `${dept.office_id} - ${dept.office_name} - ${dept.office_acronym}`,
+              `${dept.office_id} / ${dept.office_name} / ${dept.office_acronym}`
+            )
+          );
+        });
+
+        initDepartmentSelect();
+        $departmentSelect.data('loaded', true);
+      }
+    });
+  });
+
+});
+</script>
+
+
+
+<script>
+$(document).ready(function () {
+
+  const modalParent = $('#staticBackdrop-a4dst6-addemployee'); // 🔴 change if modal ID is different
+
+  const dataS = $('#addEmployee_town, #addEmployee_brgy, #addEmployee_birth_year, #addEmployee_birth_month, #addEmployee_birth_day');
+
+  /* =========================
+     INIT SELECT2 (FIXED)
+  ========================= */
+  dataS.select2({
+    placeholder: '-- SELECT --',
+    theme: 'bootstrap-5',
+    allowClear: true,
+    width: '100%',
+    dropdownParent: modalParent,        // ✅ FIX FOR MODAL
+    minimumResultsForSearch: 0           // ✅ FORCE SEARCH BOX
+  });
+
+  // Apply Bootstrap look (once)
+  dataS.each(function () {
+    $(this)
+      .next('.select2-container')
+      .find('.select2-selection--single')
+      .addClass('form-select fw-bold text-uppercase');
+  });
+
+  /* =========================
+     BIRTHDATE DROPDOWNS
+  ========================= */
+
+  // Populate years
+  const currentYear = new Date().getFullYear();
+  const yearSelect = $('#addEmployee_birth_year');
+
+  yearSelect.empty().append('<option value="">Year</option>');
+  for (let y = currentYear; y >= 1900; y--) {
+    yearSelect.append(`<option value="${y}">${y}</option>`);
+  }
+
+  function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+  }
+
+  function populateDays() {
+    const month = parseInt($('#addEmployee_birth_month').val());
+    const year  = parseInt($('#addEmployee_birth_year').val());
+    const daySelect = $('#addEmployee_birth_day');
+
+    daySelect.empty().append('<option value="">Day</option>');
+
+    if (!month || !year) {
+      daySelect.trigger('change');
+      return;
+    }
+
+    for (let d = 1; d <= daysInMonth(month, year); d++) {
+      daySelect.append(`<option value="${d}">${d}</option>`);
+    }
+
+    daySelect.trigger('change'); // ✅ refresh Select2
+  }
+
+  $('#addEmployee_birth_month, #addEmployee_birth_year').on('change', populateDays);
+
+  /* =========================
+     ADDRESS DROPDOWNS
+  ========================= */
+
+  $('#addEmployee_brgy').prop('disabled', true);
+
+  function fetchTowns() {
+    $.ajax({
+      url: `${APP_API_ENDPOINT}/getdata/address/select_town`,
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ town: '' }),
+      success: function (rows) {
+        let options = '<option value="">Select Town</option>';
+        rows.forEach(row => {
+          options += `<option value="${row.dt_town}">${row.dt_town}</option>`;
+        });
+        $('#addEmployee_town').html(options).trigger('change');
+      }
+    });
+  }
+  fetchTowns();
+
+  function fetchBarangays(town) {
+    $.ajax({
+      url: `${APP_API_ENDPOINT}/getdata/address/select_brgy`,
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ town: town, brgy: '' }),
+      success: function (rows) {
+        let options = '<option value="">Select Barangay</option>';
+        rows.forEach(row => {
+          options += `<option value="${row.dt_brgy}">${row.dt_brgy}</option>`;
+        });
+        $('#addEmployee_brgy')
+          .html(options)
+          .prop('disabled', false)
+          .trigger('change');
+      }
+    });
+  }
+
+  $('#addEmployee_town').on('change', function () {
+    const town = $(this).val();
+    if (town) {
+      fetchBarangays(town);
+    } else {
+      $('#addEmployee_brgy')
+        .html('<option value="">Select Barangay</option>')
+        .prop('disabled', true)
+        .trigger('change');
+    }
+  });
+
+});
+</script>
+
+
+
+<!-- CONTACT NUMBER FORMAT -->
+<script>
+$(document).ready(function() {
+
+    // Format input as 0900-000-0000 while typing, max 11 digits
+    $('#addEmployee_contact_number').on('input', function() {
+        if ($(this).prop('disabled')) return;
+
+        // Remove all non-digit characters
+        let numbers = $(this).val().replace(/\D/g, '');
+
+        // Limit to max 11 digits
+        if (numbers.length > 11) numbers = numbers.slice(0, 11);
+
+        // Format: 4-3-4 (for 11 digits like 09123-456-7890)
+        let formatted = '';
+        if (numbers.length > 7) {
+            formatted = numbers.slice(0, 4) + '-' + numbers.slice(4, 7) + '-' + numbers.slice(7);
+        } else if (numbers.length > 4) {
+            formatted = numbers.slice(0, 4) + '-' + numbers.slice(4);
+        } else {
+            formatted = numbers;
+        }
+
+        $(this).val(formatted);
+    });
+
+});
+</script>
+
+<!-- CONTACT NUMBER FORMAT -->
+
+<!-- checkbox N/A -->
+
+<script>
+$(document).ready(function() {
+
+                    // N/A checkbox toggle
+                    $('#contactNumber_na').on('change', function() {
+                        if($(this).is(':checked')) {
+                            $('#addEmployee_contact_number').val('N/A').prop('disabled', true).removeAttr('required');
+                        } else {
+                            $('#addEmployee_contact_number').val('').prop('disabled', false).attr('required', true);
+                        }
+                    });
+
+                    // set default checked
+                    $('#otherOffice_na').prop('checked', true);
+                    // apply initial state
+                    if ($('#otherOffice_na').is(':checked')) {
+                        $('#addEmployee_other_office').val('N/A').prop('disabled', true).removeAttr('required');
+                    }
+    
+                    $('#otherOffice_na').change(function() {
+                        if ($(this).is(':checked')) {
+                         $('#addEmployee_other_office').val('N/A').prop('disabled', true).removeAttr('required');
+                        } else {
+                         $('#addEmployee_other_office').prop('disabled', false).attr('required', true);
+                        }
+                    });
+});
+</script>
+<!-- checkbox N/A -->
+
+<script>
+$(function () {
+
+  $('#addEmployee_monthly_salary').on('input', function () {
+    let input = this.value;
+
+    // Remove invalid characters (keep digits & dot)
+    input = input.replace(/[^0-9.]/g, '');
+
+    // Prevent multiple decimals
+    const parts = input.split('.');
+    if (parts.length > 2) {
+      input = parts[0] + '.' + parts[1];
+    }
+
+    let integerPart = parts[0];
+    let decimalPart = parts[1] ?? '';
+
+    // Limit decimal to 2 digits
+    decimalPart = decimalPart.substring(0, 2);
+
+    // Add thousand separators
+    if (integerPart) {
+      integerPart = Number(integerPart).toLocaleString('en-US');
+    }
+
+    // Rebuild value
+    this.value = decimalPart !== ''
+      ? integerPart + '.' + decimalPart
+      : integerPart;
+  });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+$(function () {
+  // image id picture ==================================
+  let cropper;
+  const image = document.getElementById('xfas_image');
+  const fileInput = document.getElementById('ainputImage');
+  const preview = document.getElementById('preview2_yyxt');
+  const mainPreview = document.getElementById('preview1_yyxt');
+  const hiddenBase64 = document.getElementById('addEmployee_image_base64');
+  const rotateSlider = document.getElementById('rotateSlider');
+
+  // Open cropper modal
+  $('#btn_modal_crop_img_staticBackdrop').on('click', () => {
+    $('#modal_crop_img_staticBackdrop_cxzF1f2').modal('show');
+  });
+
+  // Load image
+  fileInput.addEventListener('change', function () {
+    const file = this.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      image.src = e.target.result;
+      if (cropper) cropper.destroy();
+
+
+      cropper = new Cropper(image, {
+        viewMode: 1,
+        aspectRatio: 1,        // ✅ FORCE 2x2 (square)
+        autoCropArea: 1,
+        movable: true,
+        zoomable: true,
+        rotatable: true,
+        scalable: true,
+        background: false,
+        responsive: true,
+      });
+
+
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Zoom
+  $('#btnZoomIn').on('click', () => cropper && cropper.zoom(0.1));
+  $('#btnZoomOut').on('click', () => cropper && cropper.zoom(-0.1));
+
+  // Reset
+  $('#btnReset').on('click', () => {
+    if (cropper) cropper.reset();
+    rotateSlider.value = 0;
+  });
+
+  // Free rotation
+  rotateSlider.addEventListener('input', function () {
+    if (cropper) cropper.rotateTo(parseFloat(this.value));
+  });
+
+  // Crop & Save
+  $('#btnCrop').on('click', () => {
+    if (!cropper) return;
+    const canvas = cropper.getCroppedCanvas({ width: 300, height: 300 });
+    const base64 = canvas.toDataURL('image/jpeg', 0.9);
+    preview.src = base64;
+    mainPreview.src = base64;
+    hiddenBase64.value = base64;
+    $('#modal_crop_img_staticBackdrop_cxzF1f2').modal('hide');
+  });
+
+  // Clear
+  $('#btnClear').on('click', () => {
+    if (cropper) cropper.destroy();
+    cropper = null;
+    image.src = '../assets/images/default-picture/user-3-fill.png';
+    preview.src = '../assets/images/default-picture/user-3-fill.png';
+    mainPreview.src = '../assets/images/default-picture/user-3-fill.png';
+    hiddenBase64.value = '';
+    rotateSlider.value = 0;
+    fileInput.value = '';
+  });
+
+  // image id picture ==================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Submit form ========================================
+$('#form_addemployee_a4dst6').on('submit', function(e) {
+    e.preventDefault();
+
+/*     if (!hiddenBase64.value) {
+        iziToast.error({ title: 'Error', message: 'Please upload and crop an ID picture.', position: 'topRight' });
+        return;
+    } */
+
+    const form = this;
+    const formData = new FormData(form);
+    const $btn = $(form).find('button[type="submit"]');
+
+    $btn.prop('disabled', true).html('<i class="ri-loader-4-line spin"></i> Processing...');
+
+    $.ajax({
+        url: `${APP_API_ENDPOINT}/insert/employee_profile_info/a4dst6`,
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        xhrFields: { withCredentials: true },
+        success(res) {
+            $btn.prop('disabled', false).html('<i class="ri-save-2-fill me-2 fs-5"></i> Save');
+
+            if (res.status !== 'success') {
+                iziToast.error({ title: 'Error', message: res.message, position: 'topRight' });
+                return;
+            }
+
+            $('#staticBackdrop-a4dst6-addemployee').modal('hide');
+            if (cropper) cropper.destroy();
+            form.reset();
+            mainPreview.src = '../assets/images/default-picture/user-3-fill.png';
+            hiddenBase64.value = '';
+
+            iziToast.success({ title: 'Success', message: res.message, position: 'topRight' });
+        },
+        error(err) {
+            $btn.prop('disabled', false).html('<i class="ri-save-2-fill me-2 fs-5"></i> Save');
+            iziToast.error({ title: 'Error', message: err.responseJSON?.message || 'Something went wrong.', position: 'topRight' });
+        }
+    });
+});
+
+
+  // Submit form ========================================
+
+
+
+  // Cleanup on cropper modal close ========================
+  $('#modal_crop_img_staticBackdrop_cxzF1f2').on('hidden.bs.modal', () => {
+    if (cropper) cropper.destroy();
+    cropper = null;
+    rotateSlider.value = 0;
+  });
+  // Cleanup on cropper modal close ========================
+
+});
+</script>
+

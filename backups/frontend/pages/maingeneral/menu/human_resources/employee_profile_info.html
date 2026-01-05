@@ -1,0 +1,218 @@
+
+
+<div id="modal_staticBackdrop-a4dst6-addemployee"></div>
+<div id="modal_staticBackdrop-a4dst6-editemployee"></div>
+
+<script>
+  $(document).ready(function() {
+    $('#modal_staticBackdrop-a4dst6-addemployee').load('../../modal/attendance_system/employee_profile_info/staticBackdrop-a4dst6-addemployee.html');
+    $('#modal_staticBackdrop-a4dst6-editemployee').load('../../modal/attendance_system/employee_profile_info/staticBackdrop-a4dst6-editemployee.html');
+  });
+</script>
+
+
+<style>
+
+/* Sticky table header */
+#table_employee_profile_info_uSc233 thead th {
+  position: sticky;
+  top: 0;
+  background: #cfe2ff; /* match Bootstrap table-primary */
+}
+
+/* Sticky last column */
+#table_employee_profile_info_uSc233 th:last-child,
+#table_employee_profile_info_uSc233 td:last-child {
+  position: sticky;
+  right: 0;
+  background: #0000009f;
+  color: #fff;
+}
+</style>
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="">Eastern Samar</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Attendance System</li>
+    <li class="breadcrumb-item active" aria-current="page">Employee Profile</li>
+
+  </ol>
+</nav>
+
+
+<div class="card">
+    <div class="card-header">
+
+    <div class="row">
+      <div class="col-md-6">
+    <select class="form-select w-auto" id="select_latest_table_employee_uSc233">
+    <option value="LATEST" selected>LATEST</option>
+    <option value="ALL">ALL</option>
+    </select>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary float-end fw-semibold" id="btnclick-a4dst6-addemployee">
+          <i class="ri-add-large-fill me-1"></i> Add employee
+        </button>
+      </div>
+    </div>
+
+
+    </div>
+    <div class="card-body m-0 p-0">
+
+        <div class="table-responsive">
+
+            <table id="table_employee_profile_info_uSc233" class="table  table-bordered table-striped text-nowrap w-100">
+                <thead class="table-primary ">
+                    <tr>
+                    <th class="text-center">No.</th>
+                    <th class="text-center">Date Added</th>
+                    <th class="text-center">Modification type</th>
+                    <th class="text-center">Current Status</th>
+
+                    <th class="text-center">From <br> (YYYY-MM-DD) </th>
+                    <th class="text-center">To <br> (YYYY-MM-DD) </th>
+                    <th class="text-center">Employee Type</th>
+                    <th class="text-center">QR Code</th>
+
+                    <th class="text-center">Employee Info</th>
+                    <th class="text-center">Gender</th>
+                    
+                    <th class="text-center">Town/City</th>
+                    <th class="text-center">Barangay</th>
+                    <th class="text-center">Office</th>
+                    <th class="text-center">Designation</th>
+                    <th class="text-center">Monthly Salary</th>
+                    <th class="text-center">Remarks</th>
+                    <th class="text-center text-white">Action</th>
+                    </tr>
+                    <tr>
+                    <!-- Column search inputs -->
+                    <th></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                                        <th></th>
+
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th><input class="form-control form-control-sm text-uppercase " placeholder="Search"></th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+$(document).ready(function () {
+
+  const table = $('#table_employee_profile_info_uSc233').DataTable({
+    serverSide: true,
+    processing: true,
+    orderCellsTop: true,
+    pageLength: 10,
+
+    ajax: {
+      url: APP_API_ENDPOINT + '/table/employee/uSc233/profile_info',
+      type: 'POST',
+      data: d => {
+        d.showType = $('#select_latest_table_employee_uSc233').val();
+      },
+      xhrFields: { withCredentials: true }
+    },
+
+    columns: [
+      { data: null, render: (d,t,r,m) => m.row + m.settings._iDisplayStart + 1 },
+      { data: 'dt_date_added' },
+      { data: 'dt_modification_type',
+        render: d => `<span class="badge bg-info">${d}</span>` },
+      { data: 'dt_current_status' },
+      { data: 'dt_date_from' },
+      { data: 'dt_date_to' },
+      { data: 'dt_employee_type' },
+
+      // ✅ QR CODE COLUMN
+      {
+        data: 'dt_employee_id',
+        orderable: false,
+        searchable: false,
+        render: id => `<canvas id="qr_${id}" width="60" height="60" title="${id}"></canvas>`
+      },
+
+      { data: 'employee_infos' },
+      { data: 'dt_employee_gender' },
+      { data: 'dt_employee_address_town' },
+      { data: 'dt_employee_address_brgy' },
+      { data: 'dt_employee_office' },
+      { data: 'dt_employee_designation' },
+      { data: 'dt_employee_monthly_salary' },
+      { data: 'dt_remarks' },
+      { data: 'action' }
+    ],
+
+    order: [[1, 'desc']]
+  });
+
+  // Column search
+  $('#table_employee_profile_info_uSc233 thead input').on('keyup change', function () {
+    table.column($(this).closest('th').index()).search(this.value).draw();
+  });
+
+  $('#select_latest_table_employee_uSc233').on('change', () => {
+    table.ajax.reload(null, false);
+  });
+
+  // QR GENERATION (SAFE & FAST)
+  table.on('draw', function () {
+    table.rows({ page: 'current' }).every(function () {
+      const row = this.data();
+      const canvas = document.getElementById(`qr_${row.dt_employee_id}`);
+
+      if (canvas && !canvas.dataset.qr) {
+        new QRious({
+          element: canvas,
+          value: row.dt_employee_id, // QR CONTENT
+          size: 60,
+          level: 'H'
+        });
+        canvas.dataset.qr = "1";
+      }
+    });
+  });
+
+  // Socket.IO refresh
+  const socket = io(APP_API_ENDPOINT, { withCredentials: true });
+  socket.on('refresh_table_employee_profile_info_uSc233', () => {
+    table.ajax.reload(null, false);
+  });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+

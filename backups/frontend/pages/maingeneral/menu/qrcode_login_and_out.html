@@ -1,0 +1,157 @@
+
+<style>
+#employeeScanReader_F, #videoXSF { width:100%; max-width:400px; margin:20px auto; border:2px solid #0d6efd; border-radius:8px; display:block; }
+#videoXSF, #canvas { display:none; }
+#photoResult, #allData { text-align:center; margin-top:10px; }
+.capture-box { margin:10px; border:1px solid #0d6efd; padding:10px; border-radius:8px; display:inline-block; text-align:center; width:220px; }
+.capture-box img { max-width:200px; border-radius:5px; display:block; margin:5px auto; }
+</style>
+
+
+
+
+<div class="text-center">
+
+  <button id="openQRBtn" class="btn btn-primary fs-5 mt-3">Open QR Scan</button>
+  <button id="closeQRBtn" class="btn btn-danger fs-5 mt-3" style="display:none">Close QR Scan</button>
+
+  <div id="employeeScanReader_F" style="display:none"></div>
+
+  <div class="my-2">
+    <select id="loginLogoutSelect" class="form-select bg-white fs-4 fw-bold text-danger d-inline w-auto">
+      <option value="LOGIN">LOGIN</option>
+      <option value="LOGOUT">LOGOUT</option>
+    </select>
+    <select id="ampmSelect" class="form-select bg-white fs-4 fw-bold text-danger d-inline w-auto">
+      <option value="AM">AM</option>
+      <option value="PM">PM</option>
+    </select>
+  </div>
+
+  <video id="videoXSF" autoplay muted playsinline></video>
+  <canvas id="canvas"></canvas>
+
+  <div id="photoResult"></div>
+
+  <button id="submitAllBtn" class="btn btn-success fs-5 mt-4">Submit All Captures</button>
+  <br>
+  <button id="showAllDataBtn" class="btn btn-secondary fs-5 mt-3">Show All Offline Captures</button>
+  <div id="allData"></div>
+</div>
+
+<script>
+$(document).ready(async function () {
+
+  const MODEL_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.0.2/model/';
+
+  await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
+  await faceapi.nets.faceLandmark68TinyNet.loadFromUri(MODEL_URL);
+
+  let qrScanner = null, faceStream = null, faceLoopId = null;
+
+  const toastSuccess = m => iziToast.success({ title:'Success', message:m, position:'topRight' });
+  const toastError   = m => iziToast.error({ title:'Error', message:m, position:'topRight' });
+  const toastWarning = m => iziToast.warning({ title:'Warning', message:m, position:'topRight' });
+
+  const loadSavedData = () => JSON.parse(localStorage.getItem('qrFaceData') || '[]');
+  const saveData = d => localStorage.setItem('qrFaceData', JSON.stringify(d));
+
+  const formatPHTime = () => { const d = new Date(); d.setHours(d.getUTCHours() + 8); return d.toISOString().slice(0,19).replace('T',' '); };
+  const getEAR = eye => { const a=Math.hypot(eye[1].x-eye[5].x,eye[1].y-eye[5].y); const b=Math.hypot(eye[2].x-eye[4].x,eye[2].y-eye[4].y); const c=Math.hypot(eye[0].x-eye[3].x,eye[0].y-eye[3].y); return (a+b)/(2*c); };
+
+  const startQRScanner = async () => {
+    $("#employeeScanReader_F").show(); $("#openQRBtn").hide(); $("#closeQRBtn").show(); $("#photoResult").html('');
+    if(qrScanner){ await qrScanner.stop().catch(()=>{}); await qrScanner.clear(); }
+    qrScanner = new Html5Qrcode("employeeScanReader_F");
+    qrScanner.start({facingMode:"environment"},{fps:10,qrbox:250}, async qrText => {
+      stopQRScanner();
+      startFaceCapture(qrText);
+    }).catch(()=>toastError("Camera permission denied"));
+  };
+
+  const stopQRScanner = async () => {
+    if(qrScanner){ await qrScanner.stop().catch(()=>{}); await qrScanner.clear(); qrScanner=null; }
+    $("#employeeScanReader_F").hide(); $("#openQRBtn").show(); $("#closeQRBtn").hide();
+  };
+
+  $("#closeQRBtn").click(stopQRScanner);
+
+  const startFaceCapture = async qrValue => {
+    const video = $('#videoXSF')[0], canvas = $('#canvas')[0], ctx = canvas.getContext('2d');
+    $("#videoXSF").show();
+    try { faceStream = await navigator.mediaDevices.getUserMedia({ video:{facingMode:"user"} }); video.srcObject = faceStream; await video.play(); } 
+    catch { toastError("Unable to access front camera"); return; }
+
+    let blinkFrames=0, BLINK_THRESHOLD=0.22;
+
+    const loop = async () => {
+      faceLoopId=requestAnimationFrame(loop);
+      if(!video.videoWidth) return;
+      const detection = await faceapi.detectSingleFace(video,new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks(true);
+      if(detection){
+        const ear = (getEAR(detection.landmarks.getLeftEye())+getEAR(detection.landmarks.getRightEye()))/2;
+        blinkFrames = ear < BLINK_THRESHOLD ? blinkFrames+1 : 0;
+
+        if(blinkFrames>=2){
+          cancelAnimationFrame(faceLoopId); faceLoopId=null;
+          canvas.width=video.videoWidth; canvas.height=video.videoHeight;
+          ctx.drawImage(video,0,0);
+          faceStream.getTracks().forEach(t=>t.stop()); video.srcObject=null; $("#videoXSF").hide();
+
+          const photo=canvas.toDataURL("image/jpeg",0.9), timestamp=formatPHTime(), loginLogout=$("#loginLogoutSelect").val(), ampm=$("#ampmSelect").val();
+
+          $("#photoResult").html(`<div class="capture-box"><strong>${qrValue}</strong><br>${timestamp}<br>${loginLogout} | ${ampm}<img src="${photo}"><button id="saveOfflineBtn" class="btn btn-warning btn-sm mt-2">Save Offline</button><button id="submitNowBtn" class="btn btn-success btn-sm mt-1">Submit Now</button></div>`);
+
+          $("#saveOfflineBtn").click(()=>{ const saved=loadSavedData(); saved.push({qr:qrValue,face:photo,timestamp,loginLogout,ampm}); saveData(saved); toastSuccess("Saved offline"); $("#photoResult").html(''); });
+          $("#submitNowBtn").click(()=>submitToServer([{qr:qrValue,face:photo,timestamp,loginLogout,ampm}], this));
+          return;
+        }
+      }
+    };
+    loop();
+  };
+
+  const submitToServer = (payload, btn) => {
+    const $btn=$(btn); $btn.prop("disabled",true).text("Submitting...");
+    $.ajax({
+      url: APP_API_ENDPOINT+'/insert/employee/save_qr_face',
+      method:'POST',
+      contentType:'application/json',
+      data:JSON.stringify(payload),
+      success:(res)=>{ res.status==="success"?toastSuccess(res.message):toastError(res.message); $("#photoResult").html(''); },
+      error:()=>toastError("Server request failed"),
+      complete:()=>$btn.prop("disabled",false).text("Submit")
+    });
+  };
+
+  const renderAllData = () => {
+    const saved = loadSavedData();
+    if(!saved.length) return $("#allData").html('<p class="text-muted">No offline records</p>');
+    let html=''; saved.forEach((d,i)=>{ html+=`<div class="capture-box" data-index="${i}"><strong>${d.qr}</strong><br>${d.timestamp}<br>${d.loginLogout} | ${d.ampm}<img src="${d.face}"><button class="btn btn-success btn-sm submitOneBtn mt-2">Submit</button><button class="btn btn-danger btn-sm removeOneBtn mt-1">Remove</button></div>`; });
+    $("#allData").html(html);
+  };
+
+  $("#showAllDataBtn").click(renderAllData);
+
+  $("#allData").on("click",".removeOneBtn",function(){ const index=$(this).closest(".capture-box").data("index"); const saved=loadSavedData(); saved.splice(index,1); saveData(saved); toastWarning("Record removed"); renderAllData(); });
+  $("#allData").on("click",".submitOneBtn",function(){ const index=$(this).closest(".capture-box").data("index"); submitToServer([loadSavedData()[index]],this); });
+
+  $("#submitAllBtn").click(function(){
+    const saved=loadSavedData(); if(!saved.length)return toastWarning("No offline data to submit");
+    const $btn=$(this).prop("disabled",true).text("Submitting all...");
+    $.ajax({
+      url: APP_API_ENDPOINT+'/insert/employee/save_qr_face',
+      method:'POST',
+      contentType:'application/json',
+      data:JSON.stringify(saved),
+      success:(res)=>{ res.status==="success"? (toastSuccess(res.message), localStorage.removeItem('qrFaceData'), $("#allData").html('')) : toastError(res.message); },
+      error:()=>toastError("Bulk submit failed"),
+      complete:()=>$btn.prop("disabled",false).text("Submit All Captures")
+    });
+  });
+
+  $("#openQRBtn").click(startQRScanner);
+
+});
+</script>
+

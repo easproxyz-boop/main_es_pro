@@ -1,0 +1,421 @@
+<!-- Modal -->
+<form id="form_add_user_account_a1f312">
+  <div class="modal fade" id="staticBackdrop-uc5xt3-adduser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop-uc5xt3-adduserLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h1 class="modal-title fs-5" id="staticBackdrop-uc5xt3-adduserLabel">
+            <i class="ri-add-large-fill me-1 fs-5"></i> Add user account
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="container-fluid">
+
+            <div class="row">
+              <div class="col-md-6">
+
+                <div class="card mt-2">
+                  <div class="card-header bg-secondary text-white fs-5">Authentication</div>
+                  <div class="card-body">
+
+                    <div class="mb-2">
+                      <label for="addUser_access_user_role" class="form-label">User Role</label>
+                      <select class="form-select fw-semibold text-uppercase"
+                              name="addUser_access_user_role"
+                              id="addUser_access_user_role"
+                              required>
+                        <option value="" selected disabled>-- SELECT ROLE --</option>
+                        <option value="USER">USER</option>
+                        <option value="ADMIN">ADMIN</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-2">
+                      <label for="addUser_access_email_address">Email Address</label>
+                      <input type="email" class="form-control fw-semibold text-uppercase" 
+                             name="addUser_access_email_address" id="addUser_access_email_address" placeholder="ENTER EMAIL" required>
+                    </div>
+
+                    <div class="mb-2">
+                      <label for="addUser_access_token">Token</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control fw-semibold text-uppercase" 
+                               name="addUser_access_token" id="addUser_access_token" readonly required>
+                        <button class="btn btn-outline-secondary" type="button" id="copyTokenBtn_y2dS">Copy</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-6">
+
+                <div class="card mt-2">
+                  <div class="card-header bg-secondary text-white fs-5">Grant Access</div>
+                  <div class="card-body">
+
+                    <div class="mb-3 d-flex align-items-center gap-2 p-2 border border-1 rounded-2">
+                      <div class="form-check form-switch mb-0">
+                        <!-- Hidden default -->
+
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="addUser_access_attendance_system"
+                          name="addUser_access_attendance_system"
+                          value="YES"
+                        >
+
+                      </div>
+
+                      <label for="addUser_access_attendance_system" class="mb-0 fw-semibold">
+                        Allow Attendance System
+                      </label>
+                    </div>
+
+
+                    <div class="mb-3 d-flex align-items-center gap-2 p-2 border border-1 rounded-2">
+                      <div class="form-check form-switch mb-0">
+
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="addUser_access_profile_information"
+                          name="addUser_access_profile_information"
+                          value="YES"
+                        >
+
+                      </div>
+
+                      <label for="addUser_access_profile_information" class="mb-0 fw-semibold">
+                        Allow Profile Information
+                      </label>
+                    </div>
+
+
+                    <div class="mb-3 d-flex align-items-center gap-2 p-2 border border-1 rounded-2">
+                      <div class="form-check form-switch mb-0">
+
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="addUser_access_public_services"
+                          name="addUser_access_public_services"
+                          value="YES"
+                        >
+
+                      </div>
+
+                      <label for="addUser_access_public_services" class="mb-0 fw-semibold">
+                        Allow Public Services
+                      </label>
+                    </div>
+
+
+                    <hr class="my-3">
+
+
+                    <div class="mb-3">
+                        <label for="addUser_access_office_department" class="form-label">Allow Office / Department</label>
+                        <select id="addUser_access_office_department" name="addUser_access_office_department" class="form-select fw-bold " required>
+                          <option value="" selected disabled>-- Select Department --</option>
+                          <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label for="addUser_access_office_satellite_town" class="form-label">Allow Office / Satellite Town</label>
+                        <select id="addUser_access_office_satellite_town" name="addUser_access_office_satellite_town" class="form-select fw-bold " required>
+                          <option value="" selected disabled>-- Select Town --</option>
+                          <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label for="addUser_access_office_satellite_brgy" class="form-label">Allow Office / Satellite Brgy</label>
+                        <select id="addUser_access_office_satellite_brgy" name="addUser_access_office_satellite_brgy" class="form-select fw-bold " required>
+                          <option value="" selected disabled>-- Select Brgy --</option>
+                          <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+
+
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary w-100 rounded-3 fs-5">
+            <i class="ri-save-2-fill me-2 fs-5"></i> Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+  // Form submission
+  $('#form_add_user_account_a1f312').on('submit', function (e) {
+    e.preventDefault();
+
+    const $form = $(this);
+    const $btn  = $form.find('button[type="submit"]');
+
+    $btn.prop('disabled', true).html('<i class="ri-loader-4-line spin"></i> Processing...');
+
+    $.ajax({
+      url: APP_API_ENDPOINT + '/insert/user_account_management/a1f312/users',
+      type: 'POST',
+      data: $form.serialize(),
+      dataType: 'json',
+      xhrFields: { withCredentials: true },
+      success: function (res) {
+        if (res.status !== 'success') {
+          iziToast.error({ title: 'Error', message: res.message || 'Something went wrong.', position: 'topRight' });
+          return;
+        }
+        iziToast.success({ title: 'Success', message: res.message, position: 'topRight' });
+        $form[0].reset();
+        $('#staticBackdrop-uc5xt3-adduser').modal('hide');
+      },
+      error: function (jqXHR) {
+        iziToast.error({ title: 'AJAX Error', message: jqXHR.responseJSON?.message || 'Server error', position: 'topRight' });
+      },
+      complete: function () {
+        $btn.prop('disabled', false).html('<i class="ri-save-2-fill me-2"></i> Save');
+      }
+    });
+  });
+
+});
+</script>
+
+
+<script>
+$(document).ready(function () {
+
+  const $modal = $('#staticBackdrop-uc5xt3-adduser');
+  const $departmentSelect = $('#addUser_access_office_department');
+
+  /* ===========================
+     SELECT2 INIT (MODAL SAFE)
+  ============================ */
+  $departmentSelect.select2({
+    placeholder: "-- SELECT DEPARTMENT --",
+    theme: 'bootstrap-5',
+    width: '100%',
+    dropdownParent: $modal
+  });
+
+  // Apply Bootstrap look to Select2
+  $departmentSelect.on('select2:open select2:select', function () {
+    $(this)
+      .next('.select2-container')
+      .find('.select2-selection--single')
+      .addClass('form-select fw-bold text-uppercase');
+  });
+
+  /* ===========================
+     FETCH DEPARTMENTS
+  ============================ */
+  $.ajax({
+    url: `${APP_API_ENDPOINT}/getdata/office/department`,
+    type: 'GET',
+    dataType: 'json',
+    xhrFields: { withCredentials: true },
+    success(response) {
+
+      if (response.status !== 'success') {
+        alert('Failed to fetch departments');
+        return;
+      }
+
+      response.data.forEach(dept => {
+        $departmentSelect.append(
+          new Option(
+            `${dept.office_id} - ${dept.office_name} - ${dept.office_acronym}`,
+            `${dept.office_id} / ${dept.office_name} / ${dept.office_acronym}`
+          )
+        );
+      });
+    },
+    error(xhr, status, error) {
+      console.error('AJAX Error:', error);
+      alert('Error fetching department data');
+    }
+  });
+});
+</script>
+
+
+
+<script>
+$(document).ready(function () {
+
+  const $modal = $('#staticBackdrop-uc5xt3-adduser');
+  const $townSelect = $('#addUser_access_office_satellite_town');
+  const $brgySelect = $('#addUser_access_office_satellite_brgy');
+
+  /* ===============================
+     INIT SELECT2 (BOOTSTRAP 5)
+  =============================== */
+
+  $townSelect.select2({
+    placeholder: '-- SELECT TOWN --',
+    theme: 'bootstrap-5',
+    width: '100%',
+    dropdownParent: $modal
+  });
+
+  $brgySelect.select2({
+    placeholder: '-- SELECT BRGY --',
+    theme: 'bootstrap-5',
+    width: '100%',
+    dropdownParent: $modal
+  }).prop('disabled', true);
+
+
+
+    $townSelect
+    .next('.select2-container')
+    .find('.select2-selection')
+    .addClass('form-select text-uppercase text-secondary');
+
+
+    $brgySelect
+    .next('.select2-container')
+    .find('.select2-selection')
+    .addClass('form-select text-uppercase text-secondary');
+
+  /* ===============================
+     FETCH TOWNS
+  =============================== */
+
+  function fetchTowns2() {
+    $.ajax({
+      url: APP_API_ENDPOINT + '/getdata/address/select_town',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ town: '' }),
+      success: function (rows) {
+     //   $townSelect.empty().append('<option></option>');
+        rows.forEach(row => {
+          $townSelect.append(
+            `<option value="${row.dt_town}">${row.dt_town}</option>`
+          );
+        });
+        $townSelect.trigger('change');
+      }
+    });
+  }
+
+  /* ===============================
+     FETCH BARANGAYS
+  =============================== */
+
+  function fetchBarangays2(town) {
+    $.ajax({
+      url: APP_API_ENDPOINT + '/getdata/address/select_brgy',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ town: town, brgy: '' }),
+      success: function (rows) {
+
+        $brgySelect
+          .prop('disabled', false)
+          .empty()
+          .append('<option value="NO">NO</option>');
+
+        rows.forEach(row => {
+          $brgySelect.append(
+            `<option value="${row.dt_brgy}">${row.dt_brgy}</option>`
+          );
+        });
+
+        $brgySelect.trigger('change');
+      }
+    });
+  }
+  /* ===============================
+     EVENTS
+  =============================== */
+  $townSelect.on('change', function () {
+    const town = $(this).val();
+
+    if (town) {
+      fetchBarangays2(town);
+    } else {
+      $brgySelect
+        .prop('disabled', true)
+        .empty()
+        .append('<option></option>')
+        .trigger('change');
+    }
+  });
+  /* ===============================
+     INIT
+  =============================== */
+  fetchTowns2();
+});
+</script>
+
+
+<script>
+  // Generate SHA-256 token function
+  async function generateTokenSHA(email) {
+    if (!email) return '';
+
+    const encoder = new TextEncoder();
+    const data = encoder.encode(email + Date.now()); // Add timestamp for uniqueness
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    
+    // Convert hash to hex string
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+    // Take first 8 characters for a short token (you can adjust length)
+    return hashHex.substring(0, 8).toUpperCase();
+  }
+
+  $(document).ready(function() {
+    // Live generate token as user types email
+    $('#addUser_access_email_address').on('input', async function() {
+      var email = $(this).val().trim();
+      var token = await generateTokenSHA(email);
+      $('#addUser_access_token').val(token);
+    });
+
+    // Copy token to clipboard with iziToast
+    $('#copyTokenBtn_y2dS').click(function() {
+      var $token = $('#addUser_access_token');
+      $token.select();
+      document.execCommand('copy');
+
+      // iziToast success notification
+      iziToast.success({
+        title: 'Copied!',
+        message: 'Token copied to clipboard.',
+        position: 'topRight',
+        timeout: 2000
+      });
+    });
+  });
+</script>
+

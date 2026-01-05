@@ -1,0 +1,559 @@
+<form id="form_edit_user_account_a1f312">
+<div class="modal fade" id="staticBackdrop-uc5xt3-edituser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop-uc5xt3-edituserLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h1 class="modal-title fs-5" id="staticBackdrop-uc5xt3-edituserLabel">
+            <i class="ri-edit-box-fill me-1 fs-5"></i> Edit user account
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+              <!-- SKELETON LOADER -->
+              <div id="skeleton-edituser-uc5xt3" class="row">
+                <div class="col-md-6">
+                  <div class="card mt-3">
+                    <div class="card-header placeholder-glow">
+                      <span class="placeholder col-6"></span>
+                    </div>
+                    <div class="card-body">
+                      <p class="placeholder-glow">
+                        <span class="placeholder col-12 mb-2"></span>
+                        <span class="placeholder col-10 mb-2"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="card mt-3">
+                    <div class="card-header placeholder-glow">
+                      <span class="placeholder col-7"></span>
+                    </div>
+                    <div class="card-body">
+                      <p class="placeholder-glow">
+                        <span class="placeholder col-12 mb-2"></span>
+                        <span class="placeholder col-11 mb-2"></span>
+                        <span class="placeholder col-10 mb-2"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- SKELETON LOADER -->
+
+
+
+        <div id="body-container-staticBackdrop-uc5xt3-edituser" class="row d-none">
+          <div class="col-md-6">
+
+            <div class="card mt-3">
+              <div class="card-header bg-secondary text-white">
+                <h4 class="fs-5">Google Information</h4>
+              </div>
+              <div class="card-body">
+                
+                <input type="hidden" id="editUser_access_num" name="editUser_access_num" readonly required>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="d-flex justify-content-center align-items-center">
+                      <img src="" id="editUser_access_google_picture" alt="" width="160" class="border border-1">
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                   <div class="mb-2">
+                      <label for="editUser_access_google_id" class="form-label">ID</label>
+                      <p class="form-control fw-semibold text-uppercase"
+                              name="editUser_access_google_id"
+                              id="editUser_access_google_id"
+                              readonly>
+                    </div>
+                    <div class="mb-2">
+                      <label for="editUser_access_google_name" class="form-label">Name</label>
+                      <p class="form-control fw-semibold text-uppercase"
+                              name="editUser_access_google_name"
+                              id="editUser_access_google_name"
+                              readonly>
+                    </div>
+                    <div class="mb-2">
+                      <label for="editUser_access_google_email" class="form-label">Email</label>
+                      <p class="form-control fw-semibold text-uppercase"
+                              name="editUser_access_google_email"
+                              id="editUser_access_google_email"
+                              readonly>
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+
+
+
+
+              </div>
+            </div>
+
+            <div class="card mt-3">
+              <div class="card-header bg-secondary text-white">
+                <h4 class="fs-5">Authentication</h4>
+              </div>
+              <div class="card-body">
+
+
+
+
+
+
+                
+
+
+
+
+
+
+
+                    <div class="mb-2">
+                      <label for="editUser_access_user_role" class="form-label">User role</label>
+                      <select class="form-select fw-semibold text-uppercase"
+                              name="editUser_access_user_role"
+                              id="editUser_access_user_role"
+                              required>
+                        <option value="" selected disabled>-- SELECT ROLE --</option>
+                        <option value="USER">USER</option>
+                        <option value="ADMIN">ADMIN</option>
+                      </select>
+                    </div>
+
+
+                    <div class="mb-2">
+                      <label for="editUser_access_current_status" class="form-label">Current status</label>
+                      <select class="form-select fw-semibold text-uppercase"
+                              name="editUser_access_current_status"
+                              id="editUser_access_current_status"
+                              required>
+                        <option value="" selected disabled>-- SELECT --</option>
+                        <option value="TOKEN">TOKEN</option>
+                        <option value="PROFILE">PROFILE</option>
+                        <option value="COMPLETED">COMPLETED</option> 
+                        <option value="ACTIVE">ACTIVE</option>
+                        <option value="BLOCKED">BLOCKED</option>
+                      </select>
+                    </div>
+
+              </div>
+            </div>
+
+
+          </div>
+          <div class="col-md-6">
+
+
+            <div class="card mt-3">
+              <div class="card-header bg-secondary text-white">
+                <h4 class="fs-5">Access Control</h4>
+              </div>
+              <div class="card-body">
+
+
+                    <div class="mb-3 d-flex align-items-center gap-2 p-2 border border-1 rounded-2">
+                      <div class="form-check form-switch mb-0">
+                        <!-- Hidden default -->
+
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="editUser_access_attendance_system"
+                          name="editUser_access_attendance_system"
+                          value="YES"
+                        >
+
+                      </div>
+
+                      <label for="editUser_access_attendance_system" class="mb-0 fw-semibold">
+                        Allow Attendance System
+                      </label>
+                    </div>
+
+
+                    <div class="mb-3 d-flex align-items-center gap-2 p-2 border border-1 rounded-2">
+                      <div class="form-check form-switch mb-0">
+
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="editUser_access_profile_information"
+                          name="editUser_access_profile_information"
+                          value="YES"
+                        >
+
+                      </div>
+
+                      <label for="editUser_access_profile_information" class="mb-0 fw-semibold">
+                        Allow Profile Information
+                      </label>
+                    </div>
+
+
+                    <div class="mb-3 d-flex align-items-center gap-2 p-2 border border-1 rounded-2">
+                      <div class="form-check form-switch mb-0">
+
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="editUser_access_public_services"
+                          name="editUser_access_public_services"
+                          value="YES"
+                        >
+
+                      </div>
+
+                      <label for="editUser_access_public_services" class="mb-0 fw-semibold">
+                        Allow Public Services
+                      </label>
+                    </div>
+
+
+                    <hr class="my-3">
+
+
+                    <div class="mb-3">
+                        <label for="editUser_access_office_department" class="form-label">Allow Office / Department</label>
+                        <select id="editUser_access_office_department" name="editUser_access_office_department" class="form-select fw-bold " required>
+                          <option value="" selected disabled>-- Select Department --</option>
+                          <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label for="editUser_access_office_satellite_town" class="form-label">Allow Office / Satellite Town</label>
+                        <select id="editUser_access_office_satellite_town" name="editUser_access_office_satellite_town" class="form-select fw-bold " required>
+                          <option value="" selected disabled>-- Select Town --</option>
+                          <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label for="editUser_access_office_satellite_brgy" class="form-label">Allow Office / Satellite Brgy</label>
+                        <select id="editUser_access_office_satellite_brgy" name="editUser_access_office_satellite_brgy" class="form-select fw-bold " required>
+                          <option value="" selected disabled>-- Select Brgy --</option>
+                          <option value="NO">NO</option>
+                        </select>
+                    </div>
+
+
+
+              </div>
+            </div>
+
+
+            
+          </div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-primary w-100 rounded-3 fs-5">
+            <i class="ri-save-2-fill me-2 fs-5"></i> Save Changes
+          </button>    
+    </div>
+  </div>
+</div>
+</form>
+
+
+
+
+<script>
+    $(document).ready(function () {
+  // Form submission
+  $('#form_edit_user_account_a1f312').on('submit', function (e) {
+    e.preventDefault();
+
+    const $form = $(this);
+    const $btn  = $form.find('button[type="submit"]');
+    $btn.prop('disabled', true).html('<i class="ri-loader-4-line spin"></i> Processing...');
+
+    $.ajax({
+      url: APP_API_ENDPOINT + '/insert2/user_account_management/a1f312/users',
+      type: 'POST',
+      data: $form.serialize(),
+      dataType: 'json',
+      xhrFields: { withCredentials: true },
+      success: function (res) {
+        if (res.status !== 'success') {
+          iziToast.error({ title: 'Error', message: res.message || 'Something went wrong.', position: 'topRight' });
+          return;
+        }
+        iziToast.success({ title: 'Success', message: res.message, position: 'topRight' });
+        $form[0].reset();
+        $('#staticBackdrop-uc5xt3-edituser').modal('hide');
+
+
+
+        
+      },
+      error: function (jqXHR) {
+        iziToast.error({ title: 'AJAX Error', message: jqXHR.responseJSON?.message || 'Server error', position: 'topRight' });
+      },
+      complete: function () {
+        $btn.prop('disabled', false).html('<i class="ri-save-2-fill me-2"></i> Save');
+      }
+    });
+  });
+
+});
+</script>
+
+
+
+
+<script>
+$(document).ready(function () {
+  const $modal = $('#staticBackdrop-uc5xt3-edituser');
+  const $townSelect = $('#editUser_access_office_satellite_town');
+  const $brgySelect = $('#editUser_access_office_satellite_brgy');
+
+  // ===============================
+  // INIT SELECT2
+  // ===============================
+  $townSelect.select2({
+    placeholder: '-- SELECT TOWN --',
+    theme: 'bootstrap-5',
+    width: '100%',
+    dropdownParent: $modal
+  });
+
+  $brgySelect.select2({
+    placeholder: '-- SELECT BRGY --',
+    theme: 'bootstrap-5',
+    width: '100%',
+    dropdownParent: $modal
+  }).prop('disabled', true);
+
+  // Add styling classes
+  $townSelect.next('.select2-container').find('.select2-selection')
+    .addClass('form-select text-uppercase text-secondary');
+  $brgySelect.next('.select2-container').find('.select2-selection')
+    .addClass('form-select text-uppercase text-secondary');
+
+  // ===============================
+  // FETCH TOWNS
+  // ===============================
+  function fetchTowns(selectedTown = null, callback = null) {
+    $.ajax({
+      url: APP_API_ENDPOINT + '/getdata/address/select_town',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ town: '' }),
+      success: function (rows) {
+        $townSelect.empty().append('<option value="NO">NO</option>');
+        rows.forEach(row => {
+          $townSelect.append(`<option value="${row.dt_town}">${row.dt_town}</option>`);
+        });
+        if (selectedTown) $townSelect.val(selectedTown).trigger('change');
+        if (callback) callback(); // run after towns loaded
+      }
+    });
+  }
+
+  // ===============================
+  // FETCH BARANGAYS
+  // ===============================
+  function fetchBarangays(town, selectedBrgy = null) {
+    $.ajax({
+      url: APP_API_ENDPOINT + '/getdata/address/select_brgy',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ town: town, brgy: '' }),
+      success: function (rows) {
+        $brgySelect.prop('disabled', false).empty().append('<option value="NO">NO</option>');
+        rows.forEach(row => {
+          $brgySelect.append(`<option value="${row.dt_brgy}">${row.dt_brgy}</option>`);
+        });
+        if (selectedBrgy) $brgySelect.val(selectedBrgy).trigger('change');
+      }
+    });
+  }
+
+  // ===============================
+  // EVENT: CHANGE TOWN
+  // ===============================
+  $townSelect.on('change', function () {
+    const town = $(this).val();
+    if (town) {
+      fetchBarangays(town);
+    } else {
+      $brgySelect.prop('disabled', true).empty().append('<option></option>').trigger('change');
+    }
+  });
+
+  // ===============================
+  // EVENT: OPEN EDIT USER MODAL
+  // ===============================
+  $(document).on('click', '#getdata-useraccount-management-users-8c7x55', function () {
+    const data_num = $(this).data('num');
+    const $form = $('#form_edit_user_account_a1f312');
+    const $body = $('#body-container-staticBackdrop-uc5xt3-edituser');
+    const $skeleton = $('#skeleton-edituser-uc5xt3');
+
+    // RESET FORM
+    $form[0].reset();
+
+    // SHOW SKELETON FIRST
+    $skeleton.removeClass('d-none');
+    $body.addClass('d-none');
+
+    $.ajax({
+      url: `${APP_API_ENDPOINT}/getdata/useraccount_management_users_8c7x55`,
+      type: 'POST',
+      dataType: 'json',
+      xhrFields: { withCredentials: true },
+      data: { num: data_num },
+      success: function (response) {
+        if (response.status !== 'success') {
+          alert('Failed to load user data');
+          return;
+        }
+        const user = response.data;
+
+
+        
+        $('#socket_global_7fs5').val(user.dt_google_email);
+
+        $('#editUser_access_num').val(user.dt_num);
+        $('#editUser_access_google_picture').attr('src', user.dt_google_picture || './assets/images/default-picture/user-3-fill.png');
+        $('#editUser_access_google_id').text(user.dt_google_id);
+        $('#editUser_access_google_name').text(user.dt_google_name);
+        $('#editUser_access_google_email').text(user.dt_google_email);
+
+        // ===============================
+        // SELECT FIELDS
+        // ===============================
+        $('#editUser_access_user_role').val(user.dt_user_role).trigger('change');
+        $('#editUser_access_current_status').val(user.dt_current_status).trigger('change');
+        $('#editUser_access_office_department').val(user.dt_access_office_department).trigger('change');
+
+        // ===============================
+        // LOAD TOWNS AND BARANGAYS
+        // ===============================
+        fetchTowns(user.dt_access_office_satellite_town, function () {
+          if (user.dt_access_office_satellite_town) {
+            fetchBarangays(user.dt_access_office_satellite_town, user.dt_access_office_satellite_brgy);
+          }
+        });
+
+        // ===============================
+        // CHECKBOXES
+        // ===============================
+        $('#editUser_access_attendance_system').prop('checked', user.dt_access_attendance_system === 'YES');
+        $('#editUser_access_profile_information').prop('checked', user.dt_access_profile_information === 'YES');
+        $('#editUser_access_public_services').prop('checked', user.dt_access_public_services === 'YES');
+
+        // SMOOTH TRANSITION
+        setTimeout(() => {
+          $skeleton.addClass('d-none');
+          $body.removeClass('d-none');
+        }, 300);
+
+
+      },
+      error: function () {
+        alert('Error fetching user data');
+        $skeleton.addClass('d-none');
+      }
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+$(document).ready(function () {
+
+  const $modal = $('#staticBackdrop-uc5xt3-edituser');
+  const $departmentSelect = $('#editUser_access_office_department');
+
+  /* ===========================
+     SELECT2 INIT (MODAL SAFE)
+  ============================ */
+  $departmentSelect.select2({
+    placeholder: "-- SELECT DEPARTMENT --",
+    theme: 'bootstrap-5',
+    width: '100%',
+    dropdownParent: $modal
+  });
+
+  // Apply Bootstrap look to Select2
+  $departmentSelect.on('select2:open select2:select', function () {
+    $(this)
+      .next('.select2-container')
+      .find('.select2-selection--single')
+      .addClass('form-select fw-bold text-uppercase');
+  });
+
+  /* ===========================
+     FETCH DEPARTMENTS
+  ============================ */
+  $.ajax({
+    url: `${APP_API_ENDPOINT}/getdata/office/department`,
+    type: 'GET',
+    dataType: 'json',
+    xhrFields: { withCredentials: true },
+    success(response) {
+
+      if (response.status !== 'success') {
+        alert('Failed to fetch departments');
+        return;
+      }
+
+      response.data.forEach(dept => {
+        $departmentSelect.append(
+          new Option(
+            `${dept.office_id} - ${dept.office_name} - ${dept.office_acronym}`,
+            `${dept.office_id} / ${dept.office_name} / ${dept.office_acronym}`
+          )
+        );
+      });
+    },
+    error(xhr, status, error) {
+      console.error('AJAX Error:', error);
+      alert('Error fetching department data');
+    }
+  });
+});
+</script>
+
+
+

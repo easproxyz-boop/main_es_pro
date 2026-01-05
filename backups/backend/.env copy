@@ -1,0 +1,21 @@
+GOOGLE_CLIENT_ID=972173721926-jf7qup8up53m596kd72l82a9hoa7sk4f.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+GOOGLE_REDIRECT_URI=http://localhost:3000/auth/google/callback
+
+PORT=3000
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+DB_NAME=eastern_samar_capitol
+
+SESSION_SECRET=Difxt3C6x #Secretsession = Difxt3C6x
+REDIS_URL=redis://127.0.0.1:6379
+
+EMAIL_USER=easproxyz@gmail.com
+EMAIL_PASS="axxfkaizxxgccpfi"
+
+
+CLOUDINARY_NAME=dqs0nxmtl
+CLOUDINARY_KEY=268974526828142
+CLOUDINARY_SECRET=xlS5mkNm0HIFUEIRGpgEPEEErZY
